@@ -28,12 +28,12 @@ def process (url, filename)
         peso = doc2.xpath('//div[@class="attribute_list"]/ul[@class="attribute_labels_lists"]').xpath('.//span[@class="attribute_name"]/text()')
         price = doc2.xpath('//div[@class="attribute_list"]/ul[@class="attribute_labels_lists"]').xpath('.//span[@class="attribute_price"]/text()')
         image = doc2.xpath('//ul[@id="thumbs_list_frame"]').xpath('.//a/img/@src')
-        image.each_with_index do |item, index|
-        row << ["#{name} #{peso[index]}".strip, "#{price[index]}".strip, "#{item}".strip]
+        peso.each_with_index do |item, index|
+        row << ["#{name} #{item}".strip, "#{price[index]}".strip, "#{image[index]}".strip]
         end
       end
      end
   end
 end
 
-process start_url, 'data'
+process start_url, 'new_data'
