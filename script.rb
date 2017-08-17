@@ -29,11 +29,11 @@ def process (url, filename)
         price = doc2.xpath('//div[@class="attribute_list"]/ul[@class="attribute_labels_lists"]').xpath('.//span[@class="attribute_price"]/text()')
         image = doc2.xpath('//ul[@id="thumbs_list_frame"]').xpath('.//a/img/@src')
         peso.each_with_index do |item, index|
-        row << ["#{name} #{item}".strip, "#{price[index]}".strip, "#{image[index]}".strip]
+          row << ["#{name} #{item}".strip, "#{price[index]}".strip, "#{image[index]}".strip] if price[index] and image[index]
         end
       end
      end
   end
 end
 
-process start_url, 'new_data'
+process start_url, 'solution'
